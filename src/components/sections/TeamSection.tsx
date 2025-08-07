@@ -1,38 +1,38 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Mail } from 'lucide-react';
 
 const TeamSection = () => {
   const teamMembers = [
     {
-      name: "Alex Chen",
+      name: "Pongpisut Somsagun",
       role: "Lead Developer & AI Specialist",
-      description: "Passionate about environmental technology and machine learning applications for public health.",
-      links: { github: "#", linkedin: "#", email: "alex@mist.app" }
+      description: "A highly skilled developer who led backend systems and implemented intelligent AI features.",
+      links: { github: "https://github.com/freddycleann", email: "alex@mist.app" }
     },
     {
-      name: "Sarah Rodriguez",
-      role: "UX/UI Designer",
-      description: "Creating intuitive interfaces that make environmental data accessible and actionable for everyone.",
-      links: { github: "#", linkedin: "#", email: "sarah@mist.app" }
+      name: "Vivien Therese Villalobos",
+      role: "Landing Page Designer & Business Support",
+      description: "Crafted the visual landing page while assisting in team planning, research and documentation.",
+      links: { github: "https://github.com/vivtv", email: "sarah@mist.app" }
     },
     {
-      name: "Marcus Kim",
-      role: "Data Scientist",
-      description: "Transforming complex air quality data into meaningful insights and predictive health recommendations.",
-      links: { github: "#", linkedin: "#", email: "marcus@mist.app" }
+      name: "Piyapat Pholchan",
+      role: "Technical Support",
+      description: "Helped maintain project functionality and testing.",
+      links: { github: "https://github.com/Piyapiyapat", email: "pang26piyapat@gmail.com" }
     },
     {
-      name: "Elena Petrov",
-      role: "Environmental Researcher",
-      description: "Bridging the gap between environmental science and technology for real-world impact.",
-      links: { github: "#", linkedin: "#", email: "elena@mist.app" }
+      name: "Patchara Sumalanurak",
+      role: "Technical Support",
+      description: "Provided technical help, and testing throughout development stages.",
+      links: { github: "https://github.com/FadedAwayIntoNothingness", email: "s6707012660069@email.kmutnb.ac.th" }
     },
     {
-      name: "Jordan Taylor",
-      role: "Full-Stack Developer",
-      description: "Building scalable solutions that can handle millions of air quality data points in real-time.",
-      links: { github: "#", linkedin: "#", email: "jordan@mist.app" }
+      name: "Sonam Norbu",
+      role: "Business Support",
+      description: "hi",
+      links: { github: "#", email: "jordan@mist.app" }
     }
   ];
 
@@ -44,7 +44,7 @@ const TeamSection = () => {
             Meet the Team Behind <span className="bg-gradient-primary bg-clip-text text-transparent">MIST</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A diverse group of developers, researchers, and designers united by our mission 
+            A diverse group of developers and designers united by our mission 
             to make air quality data accessible and actionable for healthier communities.
           </p>
         </div>
@@ -84,12 +84,6 @@ const TeamSection = () => {
                   className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                 >
                   <Github className="w-5 h-5" />
-                </a>
-                <a 
-                  href={member.links.linkedin}
-                  className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                >
-                  <Linkedin className="w-5 h-5" />
                 </a>
                 <a 
                   href={`mailto:${member.links.email}`}

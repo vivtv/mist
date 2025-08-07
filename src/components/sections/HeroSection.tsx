@@ -24,16 +24,16 @@ const HeroSection = () => {
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
             <img 
-              src="/lovable-uploads/2443b443-0318-400c-bdc6-b924cabc2fb8.png" 
+              src="src/pages/mist_logo.png" 
               alt="MIST Logo" 
-              className="w-32 h-32 mx-auto mb-6 drop-shadow-lg"
+              className="w-40 h-40 mx-auto mb-6 drop-shadow-lg"
             />
           </div>
 
           {/* Main heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-slide-up">
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              MIST
+            
             </span>
           </h1>
           
@@ -49,11 +49,8 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-slide-up" style={{ animationDelay: '0.6s' }}>
-            <Button variant="hero" size="xl" className="group">
-              <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              Download for iOS
-            </Button>
-            <Button variant="hero" size="xl" className="group">
+
+            <Button variant="hero" size="xl" onClick={() => window.open('https://github.com/FadedAwayIntoNothingness/mist/releases/download/0.0.5/MIST.apk', '_blank')} className="group">
               <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Download for Android
             </Button>

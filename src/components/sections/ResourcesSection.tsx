@@ -23,7 +23,7 @@ const ResourcesSection = () => {
     },
     {
       icon: Presentation,
-      title: "Pitch Deck Presentation",
+      title: "Pitch Presentation",
       description: "Complete investor presentation showcasing MIST's market opportunity and growth potential.",
       type: "Presentation Slides",
       action: "View Deck",
