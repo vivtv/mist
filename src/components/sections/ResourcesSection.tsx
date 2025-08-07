@@ -15,7 +15,7 @@ const ResourcesSection = () => {
       type: "Document Preview",
       action: "View Research",
       gradient: "from-blue-500/10 to-blue-600/10",
-      url: "assets/research-paper-mist.png", // PNG version
+      url: "/assets/research-paper-mist.png", // PNG version
     },
     {
       icon: Briefcase,
@@ -25,7 +25,7 @@ const ResourcesSection = () => {
       type: "Business Strategy",
       action: "View Canvas",
       gradient: "from-green-500/10 to-green-600/10",
-      url: "mist-air/public/assets/Business-Model.png", // PNG version
+      url: "/assets/Business Model.png", // PNG version
     },
     {
       icon: Presentation,
@@ -35,7 +35,7 @@ const ResourcesSection = () => {
       type: "Analysis Graphic",
       action: "View Canvas",
       gradient: "from-purple-500/10 to-purple-600/10",
-      url: "mist-air/public/assets/SWOT.png", // PNG version
+      url: "/assets/SWOT.png", // PNG version
     },
   ];
 

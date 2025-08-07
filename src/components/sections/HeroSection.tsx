@@ -24,7 +24,7 @@ const HeroSection = () => {
           {/* Logo */}
           <div className="mb-8 animate-fade-in">
             <img 
-              src="src/pages/mist_logo.png" 
+              src="/assets/mist_logo.png" 
               alt="MIST Logo" 
               className="w-40 h-40 mx-auto mb-6 drop-shadow-lg"
             />
