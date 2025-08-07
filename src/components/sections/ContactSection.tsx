@@ -137,7 +137,7 @@ const ContactSection = () => {
                   </p>
                   <p>
                     <strong className="text-foreground">Office Hours:</strong><br />
-                    Mon-Fri, 9AM-6PM PST
+                    Mon-Fri, 9AM-6PM GMT+7
                   </p>
                 </div>
               </Card>
@@ -154,24 +154,6 @@ const ContactSection = () => {
                       <Github className="w-5 h-5" />
                     </div>
                     <span>GitHub</span>
-                  </a>
-                  <a 
-                    href="#" 
-                    className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors group"
-                  >
-                    <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Twitter className="w-5 h-5" />
-                    </div>
-                    <span>Twitter</span>
-                  </a>
-                  <a 
-                    href="#" 
-                    className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors group"
-                  >
-                    <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Linkedin className="w-5 h-5" />
-                    </div>
-                    <span>LinkedIn</span>
                   </a>
                 </div>
               </Card>

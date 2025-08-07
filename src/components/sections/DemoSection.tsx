@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { MapPin, Thermometer, Wind, Eye } from 'lucide-react';
 
@@ -61,7 +61,7 @@ const DemoSection = () => {
               <h3 className="text-xl font-bold mb-4 text-primary">Real-time Monitoring</h3>
               <p className="text-muted-foreground">
                 Our demo tracks live air quality data across Bangkok, including PM2.5, PM10, 
-                ozone levels, and visibility metrics. Data is updated every hour from official 
+                ozone levels, and visibility metrics. Data is updated every 5 minutes from official 
                 monitoring stations.
               </p>
             </Card>

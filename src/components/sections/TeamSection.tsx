@@ -31,7 +31,7 @@ const TeamSection = () => {
     {
       name: "Sonam Norbu",
       role: "Business Support",
-      description: "hi",
+      description: "Contributed to documentation and aligning the project with team needs.",
       links: { github: "#", email: "jordan@mist.app" }
     }
   ];
