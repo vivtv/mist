@@ -14,7 +14,7 @@ const TeamSection = () => {
       name: "Vivien Therese Villalobos",
       role: "Landing Page Designer & Business Support",
       description: "Crafted the visual landing page while assisting in team planning, research and documentation.",
-      links: { github: "https://github.com/vivtv", email: "sarah@mist.app" }
+      links: { github: "https://www.canva.com/design/DAGt1sZFl4A/0IWeh27qRwAjHJ44GBJlrA/edit?utm_content=DAGt1sZFl4A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton", email: "sarah@mist.app" }
     },
     {
       name: "Piyapat Pholchan",
