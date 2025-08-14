@@ -71,8 +71,7 @@ const FeaturesSection = () => {
               Environmental Impact Tracking
             </h3>
             <p className="text-lg text-muted-foreground">
-              Track your carbon footprint reduction, see the collective impact of the MIST community, 
-              and contribute to cleaner air for everyone. Every action counts towards a healthier planet.
+              Track your carbon footprint and follow the MIST community’s clean air progress. Every action counts towards a healthier planet.
             </p>
           </Card>
         </div>

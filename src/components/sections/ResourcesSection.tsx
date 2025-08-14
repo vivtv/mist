@@ -9,13 +9,13 @@ const ResourcesSection = () => {
   const resources = [
     {
       icon: FileText,
-      title: "Research Paper",
+      title: "4P Marketing Canvas",
       description:
-        "Comprehensive study on air pollution impacts and gamification strategies for environmental health awareness.",
-      type: "Document Preview",
+        "Exploring Product, Price, Place, and Promotion to drive air pollution awareness through gamified engagement.",
+      type: "Problem & Solution Approach",
       action: "View Research",
       gradient: "from-blue-500/10 to-blue-600/10",
-      url: "/assets/research-paper-mist.png", // PNG version
+      url: "/assets/MIST 4P.png",
     },
     {
       icon: Briefcase,
@@ -25,7 +25,7 @@ const ResourcesSection = () => {
       type: "Business Strategy",
       action: "View Canvas",
       gradient: "from-green-500/10 to-green-600/10",
-      url: "/assets/Business Model.png", // PNG version
+      url: "/assets/Business Model.png",
     },
     {
       icon: Presentation,
@@ -35,7 +35,38 @@ const ResourcesSection = () => {
       type: "Analysis Graphic",
       action: "View Canvas",
       gradient: "from-purple-500/10 to-purple-600/10",
-      url: "/assets/SWOT.png", // PNG version
+      url: "/assets/SWOT.png",
+    },
+    {
+      icon: FileText,
+      title: "Research Paper",
+      description:
+        "In-depth academic paper detailing MIST's methodology, results, and insights for future environmental impact tracking.",
+      type: "Academic Research",
+      action: "View Paper",
+      gradient: "from-indigo-500/10 to-indigo-600/10", // updated cool tone
+      url: "/assets/Research Paper.png",
+    },
+
+    {
+      icon: Presentation,
+      title: "UVP",
+      description:
+        "A clear Unique Value Proposition statement showcasing MIST's key differentiation in the market.",
+      type: "Value Proposition",
+      action: "View UVP",
+      gradient: "from-pink-500/10 to-pink-600/10",
+      url: "/assets/MIST UVP.png",
+    },
+    {
+      icon: Presentation,
+      title: "Ocean Colors",
+      description:
+        "Ocean-inspired brand color exploration for building a strong and memorable identity.",
+      type: "Design & Branding",
+      action: "View Colors",
+      gradient: "from-cyan-500/10 to-cyan-600/10",
+      url: "/assets/OCEANS.png",
     },
   ];
 

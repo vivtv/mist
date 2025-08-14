@@ -4,10 +4,9 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Card } from '@/components/ui/card';
-import { MapPin, Thermometer, Wind, Eye } from 'lucide-react';
+import { MapPin, Lightbulb } from 'lucide-react';
 
 // --- MOCK DATA FUNCTIONS ---
-
 type AQIReading = {
   name: string;
   lat: number;
@@ -28,7 +27,7 @@ const generateMockBangkokAQI = (): AQIReading[] => [
   },
   {
     name: 'Ladprao',
-    lat: 13.8050,
+    lat: 13.805,
     lng: 100.5539,
     aqi: Math.floor(Math.random() * 200),
     pm25: parseFloat((Math.random() * 50).toFixed(1)),
@@ -37,7 +36,7 @@ const generateMockBangkokAQI = (): AQIReading[] => [
   {
     name: 'Bang Na',
     lat: 13.6682,
-    lng: 100.6140,
+    lng: 100.614,
     aqi: Math.floor(Math.random() * 200),
     pm25: parseFloat((Math.random() * 50).toFixed(1)),
     updatedAt: new Date().toISOString(),
@@ -58,7 +57,6 @@ const severityToColor = (aqi: number, dark = false): string => {
 };
 
 // --- MAIN COMPONENT ---
-
 const DemoSection = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const leafletRef = useRef<L.Map | null>(null);
@@ -74,17 +72,14 @@ const DemoSection = () => {
   const BKK_CENTER: [number, number] = [13.7563, 100.5018];
   const dark = useMemo(() => document.documentElement.classList.contains('dark'), []);
 
-  // Initialize map once
+  // Initialize map
   useEffect(() => {
     if (!mapRef.current || leafletRef.current) return;
-
     const map = L.map(mapRef.current).setView(BKK_CENTER, 11);
     leafletRef.current = map;
-
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors',
     }).addTo(map);
-
     return () => {
       map.remove();
       leafletRef.current = null;
@@ -116,13 +111,12 @@ const DemoSection = () => {
           <div style="font-size:12px">PM2.5: ${p.pm25} µg/m³</div>
           <div style="font-size:11px;opacity:.7">${new Date(p.updatedAt).toLocaleString()}</div>
           <div style="margin-top:6px;font-size:12px">
-            ${
-              getSeverity(p.aqi) === 'danger'
-                ? 'Air quality is unhealthy. Wear a mask and limit time outside.'
-                : getSeverity(p.aqi) === 'moderate'
-                ? 'Air is acceptable. Sensitive groups should take care.'
-                : 'Air is good. Enjoy the outdoors!'
-            }
+            ${getSeverity(p.aqi) === 'danger'
+          ? 'Air quality is unhealthy. Wear a mask and limit time outside.'
+          : getSeverity(p.aqi) === 'moderate'
+            ? 'Air is acceptable. Sensitive groups should take care.'
+            : 'Air is good. Enjoy the outdoors!'
+        }
           </div>
         </div>
       `);
@@ -133,7 +127,7 @@ const DemoSection = () => {
     };
   }, [data, dark]);
 
-  // Auto-refresh every 5 mins
+  // Auto-refresh
   useEffect(() => {
     fetchAQI();
     const id = setInterval(fetchAQI, 5 * 60 * 1000);
@@ -166,42 +160,80 @@ const DemoSection = () => {
           <div ref={mapRef} className="rounded-xl overflow-hidden h-[420px] w-full" />
         </Card>
 
-        {/* INFO PANEL */}
+        {/* AQI Info Card */}
         {centralData && (
-          <Card
-            className="flex items-center justify-between gap-4 p-6 mb-12 transition-all duration-300"
-            style={{ borderLeft: `8px solid ${color}` }}
-          >
-            <div className="flex items-center gap-4">
-              <MapPin className="w-12 h-12" style={{ color }} />
-              <div>
-                <h4 className="text-xl font-bold text-foreground">{centralData.name}</h4>
-                <p className="text-sm text-muted-foreground">Live Air Quality</p>
+          <Card className="flex flex-col md:flex-row items-stretch justify-between gap-6 p-6 mb-12 transition-all duration-300">
+            {/* Name + Live AQI */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between flex-1">
+              <div className="flex items-center gap-4">
+                <MapPin className="w-12 h-12 flex-shrink-0" style={{ color }} />
+                <div>
+                  <h4 className="text-xl font-bold text-foreground">{centralData.name}</h4>
+                  <p className="text-sm text-muted-foreground">Live Air Quality</p>
+                </div>
               </div>
-            </div>
-            <div className="text-right">
-              <div className="text-2xl font-bold text-foreground">AQI: {centralData.aqi}</div>
-              <div className="text-sm text-muted-foreground">PM2.5: {centralData.pm25} µg/m³</div>
-              <div className={`text-xs mt-1 ${severity === 'danger' ? 'text-red-600' : severity === 'moderate' ? 'text-yellow-600' : 'text-green-600'}`}>
-                {severity === 'danger' ? 'Unhealthy' : severity === 'moderate' ? 'Moderate' : 'Good'}
+              <div className="text-right mt-4 md:mt-0">
+                <div className="text-2xl font-bold text-foreground">AQI: {centralData.aqi}</div>
+                <div className="text-sm text-muted-foreground">PM2.5: {centralData.pm25} µg/m³</div>
+                <div
+                  className={`text-xs mt-1 ${severity === 'danger'
+                      ? 'text-red-600'
+                      : severity === 'moderate'
+                        ? 'text-yellow-600'
+                        : 'text-green-600'
+                    }`}
+                >
+                  {severity === 'danger'
+                    ? 'Unhealthy'
+                    : severity === 'moderate'
+                      ? 'Moderate'
+                      : 'Good'}
+                </div>
               </div>
             </div>
           </Card>
         )}
 
-        {/* DESCRIPTION CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* DESCRIPTION + DOWNLOAD CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <Card className="p-6 hover:shadow-soft transition-all duration-300">
             <h3 className="text-xl font-bold mb-4 text-primary">Real-time Monitoring</h3>
             <p className="text-muted-foreground">
-              Our demo tracks live air quality data across Bangkok, including PM2.5, PM10, ozone levels, and visibility metrics. Data is updated every 5 minutes from official monitoring stations.
+              Our demo tracks live air quality data across Bangkok, including PM2.5, PM10, ozone levels, and visibility metrics.
+              Data is updated every 5 minutes from official monitoring stations.
             </p>
           </Card>
+
           <Card className="p-6 hover:shadow-soft transition-all duration-300">
             <h3 className="text-xl font-bold mb-4 text-primary">Smart Recommendations</h3>
             <p className="text-muted-foreground">
-              Based on current air quality conditions, MIST provides personalized recommendations for outdoor activities, mask usage, and optimal travel routes to minimize exposure.
+              Based on current air quality conditions, MIST provides personalized recommendations for outdoor activities,
+              mask usage, and optimal travel routes to minimize exposure.
             </p>
+          </Card>
+
+          {/* Download App Card */}
+          <Card className="p-6 hover:shadow-soft transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <h3 className="text-xl font-bold mb-4 text-primary">Get the Full Experience</h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                <strong>Note:</strong> This demo only shows Bangkok's air quality.
+                To see other provinces and unlock all features, download the full app below.
+              </p>
+              <p className="text-xs text-muted-foreground flex items-center gap-1">
+                <Lightbulb className="w-4 h-4 text-yellow-500" />
+                Tip: Click the colored circles on the map for more info about each location.
+              </p>
+            </div>
+            <a
+              href="https://github.com/FadedAwayIntoNothingness/mist/releases/download/0.0.5/MIST.apk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition text-center"
+            >
+              Download MIST App
+            </a>
+
           </Card>
         </div>
       </div>

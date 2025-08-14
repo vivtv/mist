@@ -39,12 +39,12 @@ const HeroSection = () => {
           
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            A gamified air pollution tracker with AI assistance
+            From AQI to XP, turn air safety into a life game
           </p>
           
           {/* Description */}
           <p className="text-lg md:text-xl text-foreground/80 mb-12 max-w-2xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            Track air quality in real-time, earn rewards for environmental actions, and get personalized health recommendations powered by AI
+            Level up your health and take control of your day. MIST turns the air you breathe into an interactive daily quest that keeps you safe, informed, and motivated.
           </p>
 
           {/* CTA Buttons */}
