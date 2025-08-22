@@ -38,17 +38,6 @@ const ResourcesSection = () => {
       url: "/assets/SWOT.png",
     },
     {
-      icon: FileText,
-      title: "Research Paper",
-      description:
-        "In-depth academic paper detailing MIST's methodology, results, and insights for future environmental impact tracking.",
-      type: "Academic Research",
-      action: "View Paper",
-      gradient: "from-indigo-500/10 to-indigo-600/10", // updated cool tone
-      url: "/assets/Research Paper.png",
-    },
-
-    {
       icon: Presentation,
       title: "UVP",
       description:
@@ -70,6 +59,45 @@ const ResourcesSection = () => {
     },
   ];
 
+  // Split into two explicit rows: 3 on top, 2 below (centered)
+  const firstRow = resources.slice(0, 3);
+  const secondRow = resources.slice(3);
+
+  const renderCard = (resource: (typeof resources)[number], index: number) => (
+    <Card
+      key={resource.title}
+      className={`p-8 group hover:shadow-card hover:-translate-y-2 transition-all duration-500 bg-gradient-to-br ${resource.gradient} border-primary/10 w-full`}
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      <div className="text-center mb-6">
+        <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-glow transition-all duration-300">
+          <resource.icon className="w-8 h-8 text-primary-foreground" />
+        </div>
+        <div className="text-sm text-primary font-medium mb-2">{resource.type}</div>
+        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+          {resource.title}
+        </h3>
+      </div>
+
+      <p className="text-muted-foreground mb-6 leading-relaxed">{resource.description}</p>
+
+      <Button
+        variant="mist"
+        className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+        onClick={() => setSelectedImage(resource.url)}
+      >
+        <ExternalLink className="w-4 h-4 mr-2" />
+        {resource.action}
+      </Button>
+
+      <div className="mt-4 text-center">
+        <span className="text-xs text-muted-foreground bg-background/50 px-3 py-1 rounded-full">
+          Viewable in-page
+        </span>
+      </div>
+    </Card>
+  );
+
   return (
     <section id="resources" className="py-20 bg-gradient-mist">
       <div className="container mx-auto px-4">
@@ -79,47 +107,18 @@ const ResourcesSection = () => {
             Explore Our Research & Strategy
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Dive deep into the research, strategy, and vision behind MIST. Access our comprehensive
-            documentation and strategic planning materials.
+            See how Mist was built from study to strategy. Access our research paper, SWOT and TOWS analyses, and other documents prepared during the project.
           </p>
         </div>
 
-        {/* Resource Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {resources.map((resource, index) => (
-            <Card
-              key={index}
-              className={`p-8 group hover:shadow-card hover:-translate-y-2 transition-all duration-500 bg-gradient-to-br ${resource.gradient} border-primary/10`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:shadow-glow transition-all duration-300">
-                  <resource.icon className="w-8 h-8 text-primary-foreground" />
-                </div>
-                <div className="text-sm text-primary font-medium mb-2">{resource.type}</div>
-                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                  {resource.title}
-                </h3>
-              </div>
+        {/* Row 1: exactly 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-8">
+          {firstRow.map((res, i) => renderCard(res, i))}
+        </div>
 
-              <p className="text-muted-foreground mb-6 leading-relaxed">{resource.description}</p>
-
-              <Button
-                variant="mist"
-                className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
-                onClick={() => setSelectedImage(resource.url)}
-              >
-                <ExternalLink className="w-4 h-4 mr-2" />
-                {resource.action}
-              </Button>
-
-              <div className="mt-4 text-center">
-                <span className="text-xs text-muted-foreground bg-background/50 px-3 py-1 rounded-full">
-                  Viewable in-page
-                </span>
-              </div>
-            </Card>
-          ))}
+        {/* Row 2: exactly 2 cards, centered */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:justify-center max-w-4xl mx-auto">
+          {secondRow.map((res, i) => renderCard(res, i + firstRow.length))}
         </div>
 
         {/* Image Preview Section */}

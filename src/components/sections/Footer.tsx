@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           {/* Logo and description */}
           <div className="md:col-span-1">
@@ -33,9 +33,9 @@ const Footer = () => {
           </div>
 
           {/* Navigation */}
-          <div>
+          <div className="flex flex-col md:items-end">
             <h3 className="font-semibold mb-4 text-foreground">Navigation</h3>
-            <ul className="space-y-2">
+            <ul className="flex flex-wrap gap-6">
               <li>
                 <button
                   onClick={() => scrollToSection('home')}
@@ -67,84 +67,6 @@ const Footer = () => {
                 >
                   Resources
                 </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="font-semibold mb-4 text-foreground">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => scrollToSection('team')}
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Team
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Contact
-                </button>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="font-semibold mb-4 text-foreground">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Cookie Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Data Usage
-                </a>
               </li>
             </ul>
           </div>

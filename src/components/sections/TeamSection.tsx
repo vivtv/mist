@@ -7,31 +7,31 @@ const TeamSection = () => {
     {
       name: "Pongpisut Somsagun",
       role: "Lead Developer & AI Specialist",
-      description: "A highly skilled developer who led backend systems and implemented intelligent AI features.",
-      links: { github: "https://github.com/freddycleann", email: "alex@mist.app" }
+      description: "A developer who led backend systems, implemented intelligent AI features, and contributed to building app components using Flutter.",
+      links: { github: "https://github.com/freddycleann", email: "https://viktor.pongpisut@gmail.com" }
     },
     {
       name: "Vivien Therese Villalobos",
       role: "Landing Page Designer & Business Support",
-      description: "Crafted the visual landing page while assisting in team planning, research and documentation.",
-      links: { github: "https://github.com/vivtv", email: "sarah@mist.app" }
+      description: "Crafted the landing page using Vite and React, while also assisting in team planning, research, and documentation.",
+      links: { github: "https://github.com/vivtv", email: "https://vtv.villalobos@gmail.com" }
     },
     {
       name: "Piyapat Pholchan",
-      role: "Technical Support",
-      description: "Helped maintain project functionality and testing.",
-      links: { github: "https://github.com/Piyapiyapat", email: "pang26piyapat@gmail.com" }
+      role: "App UI/UX Developer",
+      description: "Designed and implemented the app’s user interface and functionality using FlutterFlow, ensuring usability and smooth user experience.",
+      links: { github: "https://github.com/Piyapiyapat", email: "https://pang26piyapat@gmail.com" }
     },
     {
       name: "Patchara Sumalanurak",
-      role: "Technical Support",
-      description: "Provided technical help, and testing throughout development stages.",
-      links: { github: "https://github.com/FadedAwayIntoNothingness", email: "s6707012660069@email.kmutnb.ac.th" }
+      role: "Presentation Support",
+      description: "Helped prepare and present the project during key milestones, supporting live demos and team communication.",
+      links: { github: "https://github.com/FadedAwayIntoNothingness", email: "https://s6707012660069@email.kmutnb.ac.th" }
     },
     {
       name: "Sonam Norbu",
-      role: "Business Support",
-      description: "Contributed to documentation and aligning the project with team needs.",
+      role: "Presentation Support",
+      description: "Supported the team by assisting with presentations and communicating project progress throughout development.",
       links: { github: "#", email: "jordan@mist.app" }
     }
   ];
@@ -44,16 +44,16 @@ const TeamSection = () => {
             Meet the Team Behind <span className="bg-gradient-primary bg-clip-text text-transparent">MIST</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A diverse group of developers and designers united by our mission 
-            to make air quality data accessible and actionable for healthier communities.
+            We started as learners and became creators, working together to design and build Mist while pushing ourselves past what we thought we could do.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {/* Use flexbox on lg to auto-center the last row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-8 max-w-6xl mx-auto">
           {teamMembers.map((member, index) => (
-            <Card 
+            <Card
               key={index}
-              className="p-6 text-center group hover:shadow-card hover:-translate-y-1 transition-all duration-500 bg-gradient-to-b from-card to-card/50"
+              className="p-6 text-center group hover:shadow-card hover:-translate-y-1 transition-all duration-500 bg-gradient-to-b from-card to-card/50 w-full md:w-auto lg:w-[30%]"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Avatar placeholder */}
@@ -62,30 +62,31 @@ const TeamSection = () => {
                   {member.name.split(' ').map(n => n[0]).join('')}
                 </span>
               </div>
-              
+
               {/* Name and role */}
               <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
                 {member.name}
               </h3>
-              
+
               <div className="text-primary font-medium mb-4">
                 {member.role}
               </div>
-              
+
               {/* Description */}
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 {member.description}
               </p>
-              
+
               {/* Social links */}
               <div className="flex justify-center space-x-4">
-                <a 
+                <a
                   href={member.links.github}
                   className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                  target="_blank" rel="noreferrer"
                 >
                   <Github className="w-5 h-5" />
                 </a>
-                <a 
+                <a
                   href={`mailto:${member.links.email}`}
                   className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                 >
@@ -94,19 +95,6 @@ const TeamSection = () => {
               </div>
             </Card>
           ))}
-        </div>
-
-        {/* Team mission */}
-        <div className="mt-16 text-center">
-          <Card className="p-8 max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-primary-glow/5 border-primary/20">
-            <h3 className="text-2xl font-bold mb-4">
-              Our Mission
-            </h3>
-            <p className="text-lg text-muted-foreground">
-              We believe that everyone deserves access to clean air and the information needed to protect their health. 
-              Through innovative technology and user-centered design, we're making environmental data meaningful and actionable.
-            </p>
-          </Card>
         </div>
       </div>
     </section>

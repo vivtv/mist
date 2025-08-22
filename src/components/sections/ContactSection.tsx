@@ -1,174 +1,126 @@
-import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Send, Github, Twitter, Linkedin } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const formRef = useRef<HTMLFormElement | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-      toast({
-        title: "Message sent!",
-        description: "Thank you for contacting us. We'll get back to you soon.",
-      });
-    }, 1000);
-  };
+    if (!formRef.current) return;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    setIsSubmitting(true);
+
+    emailjs
+      .sendForm(
+        "service_hzozvfs", // replace with your EmailJS Service ID
+        "template_9eameea", // replace with your EmailJS Template ID
+        formRef.current,
+        { publicKey: "lR5bD2XOZKcGK_TgM" } // replace with your EmailJS Public Key
+      )
+      .then(
+        () => {
+          setIsSubmitting(false);
+          toast({
+            title: "Message sent!",
+            description: "Thank you for contacting us. We'll get back to you soon.",
+          });
+          formRef.current?.reset();
+        },
+        (error) => {
+          setIsSubmitting(false);
+          toast({
+            title: "Failed to send",
+            description: error.text || "Something went wrong, please try again.",
+            variant: "destructive",
+          });
+        }
+      );
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-mist">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            Let's Improve the Air Together
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Have questions about MIST? Want to collaborate on environmental initiatives? 
-            We'd love to hear from you and discuss how we can work together for cleaner air.
-          </p>
-        </div>
+    <section
+      id="contact"
+      className="bg-gradient-hero py-20 px-6" // ✅ same gradient as HeroSection
+    >
+      <div className="max-w-6xl mx-auto bg-white shadow-xl rounded-2xl px-12 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          {/* Left Side */}
+          <div>
+            <h2 className="text-4xl font-bold mb-4 text-gray-900">Get in Touch</h2>
+            <p className="text-lg mb-4 text-gray-800">I'd like to hear from you!</p>
+            <p className="text-gray-600 mb-8">
+              If you have any inquiries or just want to say hi, please use the contact form!
+            </p>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            {/* Contact Form */}
-            <Card className="lg:col-span-2 p-8 shadow-card">
-              <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
-                      required
-                      className="mt-1"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="your.email@example.com"
-                      required
-                      className="mt-1"
-                    />
-                  </div>
-                </div>
-                
+            <p className="text-base">
+              <span className="font-semibold">Email: </span>
+              <a href="mailto:mist.contact67@gmail.com" className="text-primary hover:underline">
+                mist.contact67@gmail.com
+              </a>
+            </p>
+          </div>
+
+          {/* Right Side (Form) */}
+          <div>
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              {/* First + Last Name */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your project, questions, or how you'd like to collaborate..."
-                    rows={6}
+                  <label htmlFor="first_name" className="block mb-1 text-gray-700">First Name</label>
+                  <input
+                    id="first_name"
+                    name="first_name"
                     required
-                    className="mt-1"
+                    className="w-full h-12 border border-gray-400 bg-white text-black px-3 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
-                
-                <Button 
-                  type="submit" 
-                  variant="hero" 
-                  size="lg" 
-                  disabled={isSubmitting}
-                  className="w-full"
-                >
-                  {isSubmitting ? (
-                    <>Sending...</>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5 mr-2" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
-            </Card>
-
-            {/* Contact Info & Social */}
-            <div className="space-y-6">
-              
-              {/* Contact Info */}
-              <Card className="p-6 shadow-soft">
-                <h3 className="text-xl font-bold mb-4">Get in Touch</h3>
-                <div className="space-y-3 text-muted-foreground">
-                  <p>
-                    <strong className="text-foreground">Email:</strong><br />
-                    hello@mist.app
-                  </p>
-                  <p>
-                    <strong className="text-foreground">Response Time:</strong><br />
-                    Usually within 24 hours
-                  </p>
-                  <p>
-                    <strong className="text-foreground">Office Hours:</strong><br />
-                    Mon-Fri, 9AM-6PM GMT+7
-                  </p>
+                <div>
+                  <label htmlFor="last_name" className="block mb-1 text-gray-700">Last Name</label>
+                  <input
+                    id="last_name"
+                    name="last_name"
+                    required
+                    className="w-full h-12 border border-gray-400 bg-white text-black px-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
                 </div>
-              </Card>
+              </div>
 
-              {/* Social Links */}
-              <Card className="p-6 shadow-soft">
-                <h3 className="text-xl font-bold mb-4">Follow Our Journey</h3>
-                <div className="space-y-3">
-                  <a 
-                    href="#" 
-                    className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors group"
-                  >
-                    <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      <Github className="w-5 h-5" />
-                    </div>
-                    <span>GitHub</span>
-                  </a>
-                </div>
-              </Card>
+              {/* Email */}
+              <div>
+                <label htmlFor="user_email" className="block mb-1 text-gray-700">Email *</label>
+                <input
+                  id="user_email"
+                  name="user_email"
+                  type="email"
+                  required
+                  className="w-full h-12 border border-gray-400 bg-white text-black px-3 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
 
-              {/* Call to Action */}
-              <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary-glow/10 border-primary/20">
-                <h3 className="text-lg font-bold mb-2">Join the Movement</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Be part of the community working towards cleaner air and healthier cities.
-                </p>
-                <Button variant="mist" size="sm" className="w-full">
-                  Learn More
-                </Button>
-              </Card>
-            </div>
+              {/* Message */}
+              <div>
+                <label htmlFor="message" className="block mb-1 text-gray-700">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  className="w-full border border-gray-400 bg-white text-black px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+
+              {/* Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-primary text-white px-8 py-2 font-medium rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                {isSubmitting ? "Sending..." : "Send"}
+              </button>
+            </form>
           </div>
         </div>
       </div>

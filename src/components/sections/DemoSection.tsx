@@ -177,10 +177,10 @@ const DemoSection = () => {
                 <div className="text-sm text-muted-foreground">PM2.5: {centralData.pm25} µg/m³</div>
                 <div
                   className={`text-xs mt-1 ${severity === 'danger'
-                      ? 'text-red-600'
-                      : severity === 'moderate'
-                        ? 'text-yellow-600'
-                        : 'text-green-600'
+                    ? 'text-red-600'
+                    : severity === 'moderate'
+                      ? 'text-yellow-600'
+                      : 'text-green-600'
                     }`}
                 >
                   {severity === 'danger'
@@ -204,13 +204,23 @@ const DemoSection = () => {
             </p>
           </Card>
 
-          <Card className="p-6 hover:shadow-soft transition-all duration-300">
-            <h3 className="text-xl font-bold mb-4 text-primary">Smart Recommendations</h3>
-            <p className="text-muted-foreground">
-              Based on current air quality conditions, MIST provides personalized recommendations for outdoor activities,
-              mask usage, and optimal travel routes to minimize exposure.
-            </p>
-          </Card>
+          <Card className="p-6 hover:shadow-soft transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <h3 className="text-xl font-bold mb-4 text-primary">See How It Works</h3>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Watch a quick 30 second video to learn how to use MIST and get the most
+                  out of its features in your daily life.
+                </p>
+              </div>
+              <a
+                href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-block bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition text-center"
+              >
+                Watch Preview
+              </a>
+            </Card>
 
           {/* Download App Card */}
           <Card className="p-6 hover:shadow-soft transition-all duration-300 flex flex-col justify-between">
@@ -233,6 +243,7 @@ const DemoSection = () => {
             >
               Download MIST App
             </a>
+
 
           </Card>
         </div>
