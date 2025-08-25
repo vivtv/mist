@@ -81,12 +81,19 @@ const FeaturesSection = () => {
           <h3 className="text-2xl font-bold mb-8">
             United Nations Sustainable Development Goals
           </h3>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <Card className="p-6 text-center hover:shadow-card transition">
               <img src="/assets/3.png" alt="SDG 3 Good Health and Well being" width={80} height={80} loading="lazy" className="mx-auto mb-4" />
               <h4 className="font-bold text-lg">SDG 3 Good Health and Well being</h4>
               <p className="text-sm text-muted-foreground mt-2">
                 Helps people reduce exposure and make safer daily choices with timely information.
+              </p>
+            </Card>
+            <Card className="p-6 text-center hover:shadow-card transition">
+              <img src="/assets/4.png" alt="SDG 4 Quality Education" width={80} height={80} loading="lazy" className="mx-auto mb-4" />
+              <h4 className="font-bold text-lg">SDG 4 Quality Education</h4>
+              <p className="text-sm text-muted-foreground mt-2">
+                Provides accessible information and education about air pollution, AQI, and healthy practices.
               </p>
             </Card>
             <Card className="p-6 text-center hover:shadow-card transition">
@@ -105,6 +112,7 @@ const FeaturesSection = () => {
             </Card>
           </div>
         </div>
+
 
         {/* iPAT cards - full width, centered row */}
         <div className="mt-20 text-center">

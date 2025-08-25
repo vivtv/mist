@@ -92,7 +92,7 @@ const ResourcesSection = () => {
 
       <div className="mt-4 text-center">
         <span className="text-xs text-muted-foreground bg-background/50 px-3 py-1 rounded-full">
-          Viewable in-page
+          Document will be shown below for easy viewing.
         </span>
       </div>
     </Card>
