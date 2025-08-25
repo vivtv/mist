@@ -7,32 +7,33 @@ const TeamSection = () => {
     {
       name: "Pongpisut Somsagun",
       role: "Lead Developer & AI Specialist",
-      description: "A developer who led backend systems, implemented intelligent AI features, and contributed to building app components using Flutter.",
-      links: { github: "https://github.com/freddycleann", email: "https://viktor.pongpisut@gmail.com" }
+      description: "Lead developer who implemented intelligent AI features, contributed to building app components using Flutter, and also helped in presenting and preparing the presentation of Mist during development.",
+      links: { github: "https://github.com/freddycleann", email: "viktor.pongpisut@gmail.com" }
     },
     {
       name: "Vivien Therese Villalobos",
-      role: "Landing Page Designer & Business Support",
-      description: "Crafted the landing page using Vite and React, while also assisting in team planning, research, and documentation.",
-      links: { github: "https://github.com/vivtv", email: "https://vtv.villalobos@gmail.com" }
+      role: "Landing Page Designer, Business Support, Video Editor",
+      description: "Crafted the landing page using Vite and React, created Mist’s video while also assisting in team planning, research, and documentation.",
+      links: { github: "https://github.com/vivtv", email: "vtv.villalobos@gmail.com" }
     },
     {
       name: "Piyapat Pholchan",
       role: "App UI/UX Developer",
-      description: "Designed and implemented the app’s user interface and functionality using FlutterFlow, ensuring usability and smooth user experience.",
-      links: { github: "https://github.com/Piyapiyapat", email: "https://pang26piyapat@gmail.com" }
+      description: "Designed and implemented the app’s user interface and functionality using FlutterFlow, ensuring usability and smooth user experience, while also contributing to presenting and preparing the presentation of Mist during development.",
+      links: { github: "https://github.com/Piyapiyapat", email: "pang26piyapat@gmail.com" }
     },
+
     {
       name: "Patchara Sumalanurak",
       role: "Presentation Support",
       description: "Helped prepare and present the project during key milestones, supporting live demos and team communication.",
-      links: { github: "https://github.com/FadedAwayIntoNothingness", email: "https://s6707012660069@email.kmutnb.ac.th" }
+      links: { github: "https://github.com/FadedAwayIntoNothingness", email: "s6707012660069@email.kmutnb.ac.th" }
     },
     {
       name: "Sonam Norbu",
       role: "Presentation Support",
       description: "Supported the team by assisting with presentations and communicating project progress throughout development.",
-      links: { github: "#", email: "jordan@mist.app" }
+      links: { github: "#", email: "s6707012660239@email.kmutnb.ac.th" }
     }
   ];
 
@@ -48,7 +49,7 @@ const TeamSection = () => {
           </p>
         </div>
 
-        {/* Use flexbox on lg to auto-center the last row */}
+        {/* Grid/Flex Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-8 max-w-6xl mx-auto">
           {teamMembers.map((member, index) => (
             <Card
@@ -73,24 +74,24 @@ const TeamSection = () => {
               </div>
 
               {/* Description */}
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-muted-foreground mb-4 leading-relaxed">
                 {member.description}
               </p>
 
-              {/* Social links */}
-              <div className="flex justify-center space-x-4">
+              {/* Email shown directly */}
+              <div className="flex items-center justify-center text-sm text-muted-foreground mb-6">
+                <Mail className="w-4 h-4 mr-2" />
+                <span>{member.links.email}</span>
+              </div>
+
+              {/* Github link only */}
+              <div className="flex justify-center">
                 <a
                   href={member.links.github}
                   className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
                   target="_blank" rel="noreferrer"
                 >
                   <Github className="w-5 h-5" />
-                </a>
-                <a
-                  href={`mailto:${member.links.email}`}
-                  className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                >
-                  <Mail className="w-5 h-5" />
                 </a>
               </div>
             </Card>
