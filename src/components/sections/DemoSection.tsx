@@ -213,7 +213,7 @@ const DemoSection = () => {
                 </p>
               </div>
               <a
-                href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID"
+                href="https://drive.google.com/file/d/1XR-Rk2X3lBePKSIgM6gn_Pbr-LHBmDIl/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-block bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition text-center"
@@ -236,7 +236,7 @@ const DemoSection = () => {
               </p>
             </div>
             <a
-              href="https://github.com/FadedAwayIntoNothingness/mist/releases/download/0.0.5/MIST.apk"
+              href="https://github.com/FadedAwayIntoNothingness/mist/releases/download/0.0.8/MIST.apk"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition text-center"

@@ -69,13 +69,8 @@ const FeaturesSection = () => {
           {/* Right side: Images */}
           <div className="lg:col-span-3 flex flex-col gap-6 justify-center">
             <img
-              src="/images/mist-preview-1.png"
+              src="/assets/mistss.png"
               alt="Mist App Interface 1"
-              className="rounded-2xl shadow-lg w-full max-w-[200px] mx-auto h-auto"
-            />
-            <img
-              src="/images/mist-preview-2.png"
-              alt="Mist App Interface 2"
               className="rounded-2xl shadow-lg w-full max-w-[200px] mx-auto h-auto"
             />
           </div>

@@ -72,7 +72,7 @@ const HeroSection = () => {
               size="xl"
               onClick={() =>
                 window.open(
-                  'https://github.com/FadedAwayIntoNothingness/mist/releases/download/0.0.5/MIST.apk',
+                  'https://github.com/FadedAwayIntoNothingness/mist/releases/download/0.0.8/MIST.apk',
                   '_blank'
                 )
               }
@@ -97,7 +97,7 @@ const HeroSection = () => {
               size="xl"
               onClick={() =>
                 window.open(
-                  'https://www.youtube.com/watch?v=YOUR_VIDEO_ID',
+                  'https://drive.google.com/file/d/1MO2vWWdJOJVYjfU9pY5g6cWcnlM5t3Cn/view?usp=sharing',
                   '_blank'
                 )
               }
