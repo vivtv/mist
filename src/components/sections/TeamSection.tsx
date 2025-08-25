@@ -69,9 +69,7 @@ const TeamSection = () => {
           {teamMembers.map((member, index) => (
             <Card
               key={index}
-              className={`p-6 text-center group hover:shadow-card hover:-translate-y-1 transition-all duration-500 bg-gradient-to-b from-card to-card/50 w-full md:w-auto lg:w-[30%] ${
-                member.highlight ? "border-2 border-primary shadow-lg" : ""
-              }`}
+              className={`p-6 text-center group hover:shadow-card hover:-translate-y-1 transition-all duration-500 bg-gradient-to-b from-card to-card/50 w-full md:w-auto lg:w-[30%] border-2 border-primary shadow-lg`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Avatar placeholder */}
@@ -89,7 +87,7 @@ const TeamSection = () => {
                 {member.name}
               </h3>
 
-              {/* Role with badge for leaders */}
+              {/* Role with badge only for leader */}
               <div className="text-primary font-medium mb-4 flex items-center justify-center gap-2">
                 {member.role}
                 {member.highlight && (
